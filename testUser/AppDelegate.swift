@@ -17,6 +17,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        _ = NSUserDefaults()
+        let userHasOnboardedKey = "user_has_onboarded"
+        let iloggedin = NSUserDefaults.standardUserDefaults().boolForKey(userHasOnboardedKey)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UINavigationBar.appearance().barTintColor = UIColor(red: 106.0/255.0, green: 180.0/255.0, blue:
+            255.0/255.0, alpha: 0.3)
+        UINavigationBar.appearance().tintColor = UIColor.blueColor()
+        if let barFont = UIFont(name: "Perca",size: 22.0) {
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.orangeColor(), NSFontAttributeName:barFont]
+            
+            UIBarButtonItem.appearance().tintColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue:
+                255.0/255.0, alpha: 1.0)
+            UIToolbar.appearance().barTintColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue:
+                255.0/255.0, alpha: 0.5)
+        }
+    Parse.setApplicationId("q9UIvMvVh9LjKv0m9MCGjbfFry3HCNERQVKZO4pJ", clientKey: "2bECvum8c8j5kUWADrBRyX65CubFagaskOz3KfBk")
+        
+        
+        //NSUserDefaults bool value, for logged in and for logged out
+        if iloggedin.boolValue == true {
+
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var exampleViewController: UITabBarController = mainStoryboard.instantiateViewControllerWithIdentifier("start") as! UITabBarController
+        
+        self.window?.rootViewController = exampleViewController
+        
+        self.window?.makeKeyAndVisible()
+        } else {
+            
+
+        
+        }
         return true
     }
 
@@ -49,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "Vibell.testUser" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -65,21 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("testUser.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
-            coordinator = nil
-            // Report any error we got.
-            var dict = [String: AnyObject]()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
-            // Replace this with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()
-        }
-        
-        return coordinator
+               return coordinator
     }()
 
     lazy var managedObjectContext: NSManagedObjectContext? = {
@@ -98,13 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
-            }
-        }
+                    }
     }
 
 }
