@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ndE-r1-dWp">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Perca.otf">
+            <string>Perca</string>
+            <string>Perca</string>
             <string>Perca</string>
             <string>Perca</string>
             <string>Perca</string>
@@ -17,7 +20,7 @@
         <!--Login View Controller-->
         <scene sceneID="ore-ui-aH4">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ndE-r1-dWp" customClass="LoginViewController" customModule="testUser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ndE-r1-dWp" customClass="LoginViewController" customModule="TeamLists" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hUl-cv-XSc"/>
                         <viewControllerLayoutGuide type="bottom" id="36f-3a-Xpq"/>
@@ -78,10 +81,10 @@
                                 <color key="textColor" red="0.11270144177437991" green="0.090896157876692918" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="UsList" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7u-kc-JzW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TeamList" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7u-kc-JzW">
                                 <rect key="frame" x="60" y="78" width="202" height="68"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="Perca" family="Perca" pointSize="65"/>
+                                <fontDescription key="fontDescription" name="Perca" family="Perca" pointSize="61"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -139,26 +142,58 @@
             </objects>
             <point key="canvasLocation" x="612" y="331"/>
         </scene>
-        <!--UsList-->
+        <!--TeamList-->
         <scene sceneID="3JO-Ar-cLT">
             <objects>
-                <tableViewController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0DC-cP-oKF" customClass="HomeTableViewController" customModule="testUser" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="22" sectionFooterHeight="22" id="I9N-2U-amu">
+                <tableViewController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0DC-cP-oKF" customClass="HomeTableViewController" customModule="TeamLists" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="22" sectionFooterHeight="22" id="I9N-2U-amu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="k0e-bP-uSE">
-                                <rect key="frame" x="0.0" y="86" width="320" height="79"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="94" id="k0e-bP-uSE" customClass="CustomTableViewCell" customModule="TeamLists" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="320" height="94"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k0e-bP-uSE" id="Puo-cM-mT8">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="93.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCv-gA-gAf">
+                                            <rect key="frame" x="8" y="40" width="304" height="45"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRG-Fy-q9T">
+                                            <rect key="frame" x="8" y="8" width="304" height="24"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="W7o-QV-dUN"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="NCv-gA-gAf" firstAttribute="trailing" secondItem="Puo-cM-mT8" secondAttribute="trailingMargin" id="2IR-md-P9z"/>
+                                        <constraint firstItem="NCv-gA-gAf" firstAttribute="top" secondItem="ZRG-Fy-q9T" secondAttribute="bottom" constant="8" symbolic="YES" id="654-fj-0mc"/>
+                                        <constraint firstItem="ZRG-Fy-q9T" firstAttribute="leading" secondItem="NCv-gA-gAf" secondAttribute="leading" id="Nsg-Xs-zaq"/>
+                                        <constraint firstItem="ZRG-Fy-q9T" firstAttribute="top" secondItem="Puo-cM-mT8" secondAttribute="topMargin" id="OPl-Y6-PXf"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="NCv-gA-gAf" secondAttribute="bottom" constant="0.5" id="r61-b0-E1g"/>
+                                        <constraint firstItem="NCv-gA-gAf" firstAttribute="leading" secondItem="Puo-cM-mT8" secondAttribute="leadingMargin" id="rqB-v1-R8e"/>
+                                        <constraint firstItem="ZRG-Fy-q9T" firstAttribute="trailing" secondItem="NCv-gA-gAf" secondAttribute="trailing" id="s9U-9t-Wva"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="desclabel" destination="NCv-gA-gAf" id="b3q-WY-h9j"/>
+                                    <outlet property="listname" destination="ZRG-Fy-q9T" id="qj1-wL-Wb6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -166,7 +201,7 @@
                             <outlet property="delegate" destination="0DC-cP-oKF" id="hXY-yi-Sc9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="UsList" id="PqH-Q1-Po3">
+                    <navigationItem key="navigationItem" title="TeamList" id="PqH-Q1-Po3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qrL-sY-r47">
                             <connections>
                                 <segue destination="Ldw-dm-95j" kind="push" id="ByR-1l-ywr"/>
@@ -178,10 +213,10 @@
             </objects>
             <point key="canvasLocation" x="1660" y="1117"/>
         </scene>
-        <!--UsList-->
+        <!--New List-->
         <scene sceneID="Uoc-PX-Mjj">
             <objects>
-                <viewController id="Ldw-dm-95j" customClass="ViewController" customModule="testUser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ldw-dm-95j" customClass="ViewController" customModule="TeamLists" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kpZ-TU-xOH"/>
                         <viewControllerLayoutGuide type="bottom" id="E0l-kr-25w"/>
@@ -189,12 +224,73 @@
                     <view key="view" contentMode="scaleToFill" id="m1Z-65-Pfp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KMc-Zg-uLZ">
+                                <rect key="frame" x="20" y="102" width="280" height="36"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="jhw-xE-eOx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuA-Xy-ft0">
+                                <rect key="frame" x="20" y="72" width="78" height="22"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="hHc-xc-BsJ"/>
+                                    <constraint firstAttribute="height" constant="22" id="pM9-fi-NDg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Perca" family="Perca" pointSize="28"/>
+                                <color key="textColor" red="0.415234993" green="0.70446359700000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1r-GJ-opP">
+                                <rect key="frame" x="20" y="146" width="108" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1jE-8Q-kIp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Perca" family="Perca" pointSize="28"/>
+                                <color key="textColor" red="0.415234993" green="0.70446359700000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="oG5-1p-xpH">
+                                <rect key="frame" x="20" y="184" width="280" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KMc-Zg-uLZ" firstAttribute="top" secondItem="zuA-Xy-ft0" secondAttribute="bottom" constant="8" symbolic="YES" id="5GE-yb-0c9"/>
+                            <constraint firstItem="oG5-1p-xpH" firstAttribute="trailing" secondItem="KMc-Zg-uLZ" secondAttribute="trailing" id="BBh-ll-y4Q"/>
+                            <constraint firstItem="O1r-GJ-opP" firstAttribute="leading" secondItem="oG5-1p-xpH" secondAttribute="leading" id="DZ6-b5-MVT"/>
+                            <constraint firstItem="zuA-Xy-ft0" firstAttribute="leading" secondItem="KMc-Zg-uLZ" secondAttribute="leading" id="SH4-Q9-HGd"/>
+                            <constraint firstItem="E0l-kr-25w" firstAttribute="top" secondItem="oG5-1p-xpH" secondAttribute="bottom" constant="207" id="UNx-Zu-h4B"/>
+                            <constraint firstItem="oG5-1p-xpH" firstAttribute="centerX" secondItem="m1Z-65-Pfp" secondAttribute="centerX" id="XTc-jy-fcb"/>
+                            <constraint firstItem="KMc-Zg-uLZ" firstAttribute="leading" secondItem="O1r-GJ-opP" secondAttribute="leading" id="Yco-2H-R7v"/>
+                            <constraint firstItem="O1r-GJ-opP" firstAttribute="top" secondItem="KMc-Zg-uLZ" secondAttribute="bottom" constant="8" symbolic="YES" id="fnL-Ms-OPl"/>
+                            <constraint firstItem="oG5-1p-xpH" firstAttribute="top" secondItem="O1r-GJ-opP" secondAttribute="bottom" constant="8" symbolic="YES" id="gYE-YC-sdh"/>
+                            <constraint firstItem="zuA-Xy-ft0" firstAttribute="leading" secondItem="m1Z-65-Pfp" secondAttribute="leadingMargin" constant="4" id="wYv-Mt-Aeo"/>
+                            <constraint firstItem="zuA-Xy-ft0" firstAttribute="top" secondItem="kpZ-TU-xOH" secondAttribute="bottom" constant="8" symbolic="YES" id="zLF-tP-6S6"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="UsList" id="axI-Zs-4Jm">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="tpn-3s-vPV"/>
+                    <navigationItem key="navigationItem" title="New List" id="axI-Zs-4Jm">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="tpn-3s-vPV">
+                            <connections>
+                                <action selector="saveAction:" destination="Ldw-dm-95j" id="Kfq-Jt-PA9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="descfield" destination="oG5-1p-xpH" id="aWk-ne-QoA"/>
+                        <outlet property="namefield" destination="KMc-Zg-uLZ" id="4lJ-R8-Jze"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtm-GJ-fud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,7 +299,7 @@
         <!--View Controller-->
         <scene sceneID="A4f-eC-V5L">
             <objects>
-                <viewController storyboardIdentifier="RAND" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N9q-RM-BdW" customClass="RANDViewController" customModule="testUser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RAND" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N9q-RM-BdW" customClass="RANDViewController" customModule="TeamLists" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pLU-ea-Y8I"/>
                         <viewControllerLayoutGuide type="bottom" id="S6m-GH-kM3"/>
@@ -260,7 +356,7 @@
         <!--Me-->
         <scene sceneID="buY-2d-vAF">
             <objects>
-                <viewController id="TXT-rX-W9b" customClass="MeViewController" customModule="testUser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TXT-rX-W9b" customClass="MeViewController" customModule="TeamLists" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u33-tP-Iw7"/>
                         <viewControllerLayoutGuide type="bottom" id="Qif-cx-6DR"/>
@@ -345,7 +441,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="vWp-AG-umV">
             <objects>
-                <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZRJ-nG-frZ" customClass="SignUpViewController" customModule="testUser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZRJ-nG-frZ" customClass="SignUpViewController" customModule="TeamLists" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z13-nN-brt"/>
                         <viewControllerLayoutGuide type="bottom" id="kuK-FE-L0g"/>
@@ -432,10 +528,10 @@
                                     <action selector="loginVerifyButton:" destination="ZRJ-nG-frZ" eventType="touchUpInside" id="E7I-Ye-nd7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="UsList" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atL-WU-DzT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TeamList" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atL-WU-DzT">
                                 <rect key="frame" x="60" y="78" width="202" height="68"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="Perca" family="Perca" pointSize="65"/>
+                                <fontDescription key="fontDescription" name="Perca" family="Perca" pointSize="61"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>

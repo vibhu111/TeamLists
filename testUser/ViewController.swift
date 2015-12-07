@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
+    @IBOutlet var namefield: UITextField!
+    
+    @IBOutlet var descfield: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        descfield.text = ""
+        descfield.layer.borderColor = UIColor.lightGrayColor().CGColor
+        descfield.layer.borderWidth = 2
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +32,24 @@ class ViewController: UIViewController {
         return true
     }
 
+
+    
+    @IBAction func saveAction(sender: AnyObject) {
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        let infoitem = Lists()
+        infoitem.name = namefield.text!
+        infoitem.desc = descfield.text!
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.add(infoitem)
+            
+        }
+        
+        
+    }
 
 
 }

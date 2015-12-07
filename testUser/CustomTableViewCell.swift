@@ -10,9 +10,15 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet var desclabel: UILabel!
+    @IBOutlet var listname: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        desclabel.text = ""
+        listname.text = ""
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

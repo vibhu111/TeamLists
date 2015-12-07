@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeTableViewController: UITableViewController {
 
+    var datasource :Results<Lists>!
+    
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        datar()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +29,10 @@ class HomeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //var hello =
         //println()
+       
+
+        datar()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,16 +42,16 @@ class HomeTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    /*override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 0
-    }
+    }*/
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return datasource.count
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -46,12 +59,23 @@ class HomeTableViewController: UITableViewController {
     }
     
 
+    func datar(){
+        let realm = try? Realm()
+        datasource = realm!.objects(Lists)
+        tableView?.reloadData()
+    }
+    
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CustomTableViewCell
 
+        
         // Configure the cell...
 
+        let currentInfo = datasource[indexPath.row]
+        cell.listname.text = currentInfo.name
+        cell.desclabel.text = currentInfo.desc
         return cell
     }
     
