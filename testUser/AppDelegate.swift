@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             255.0/255.0, alpha: 0.3)
         UINavigationBar.appearance().tintColor = UIColor.blueColor()
         if let barFont = UIFont(name: "Perca",size: 22.0) {
-            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.orangeColor(), NSFontAttributeName:barFont]
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 229.0/255.0, green: 111.0/255.0, blue:
+                105.0/255.0, alpha: 1.0)
+, NSFontAttributeName:barFont]
             
             UIBarButtonItem.appearance().tintColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue:
                 255.0/255.0, alpha: 1.0)

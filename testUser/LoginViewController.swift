@@ -24,6 +24,9 @@ class LoginViewController: UIViewController {
             let userHasOnboardedKey = "user_has_onboarded"
             var iloggedin = NSUserDefaults.standardUserDefaults().boolForKey(userHasOnboardedKey)
         
+            
+            
+            
         // Do any additional setup after loading the view.
     }
 
@@ -79,6 +82,14 @@ class LoginViewController: UIViewController {
             // Empty, Notify user
             self.messageLabel.text = "The username or password is incorrect"
         }
+
+    }
+    
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+            self.view.endEditing(true)
+        
 
     }
 
