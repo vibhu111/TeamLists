@@ -84,7 +84,11 @@ class HomeTableViewController: UITableViewController {
     
     
     
-
+   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    performSegueWithIdentifier("listitem", sender: self)
+    
+    }
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

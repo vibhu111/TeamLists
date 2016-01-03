@@ -195,6 +195,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="zGL-9a-Doh" kind="push" identifier="listitem" id="tLW-3z-0wD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uyb-2t-Tbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -580,6 +583,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qD3-lD-7lO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1144" y="331"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="N82-7D-egd">
+            <objects>
+                <tableViewController id="zGL-9a-Doh" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="K3k-4z-D5r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AJt-hQ-2wY">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AJt-hQ-2wY" id="sh4-7a-RCD">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zGL-9a-Doh" id="beE-vo-fnj"/>
+                            <outlet property="delegate" destination="zGL-9a-Doh" id="4za-V4-0Uv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ms5-fL-qhO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N7N-6r-9Ho" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="481"/>
         </scene>
     </scenes>
     <resources>
