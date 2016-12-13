@@ -11,12 +11,13 @@ import RealmSwift
 
 class HomeTableViewController: UITableViewController {
     
-    var datasource :Results<Lists>!
+    var datasourcei :Results<Lists>!
     
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         datar()
+       
     }
     
     override func viewDidLoad() {
@@ -29,7 +30,7 @@ class HomeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //var hello =
         //println()
-        
+            
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -50,32 +51,41 @@ class HomeTableViewController: UITableViewController {
     return 0
     }*/
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
+      var xyz = 0
         // Return the number of rows in the section.
-        return datasource.count
+        if datasourcei != nil{
+           xyz = datasourcei.count}
+        return xyz
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
     
     func datar(){
         let realm = try? Realm()
-        datasource = realm!.objects(Lists)
-        tableView?.reloadData()
+     datasourcei = realm?.objects(Lists)
+        self.tableView.setEditing(false, animated: true)
+        self.tableView.reloadData()
     }
     
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CustomTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         
         
         // Configure the cell...
         
-        let currentInfo = datasource[indexPath.row]
+        var currentInfo = datasourcei[indexPath.row]
+        //
+        //
+        //WHY ARE THE LIST AND LISTITEM OBJECT CONNECTED!!!!!!!!
+        var x = Lists()
+        print (x)
         cell.listname.text = currentInfo.name
         cell.desclabel.text = currentInfo.desc
         return cell
@@ -84,14 +94,14 @@ class HomeTableViewController: UITableViewController {
     
     
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegueWithIdentifier("listitem", sender: self)
+        performSegue(withIdentifier: "listitem", sender: self)
         
     }
     
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
     }
@@ -99,15 +109,15 @@ class HomeTableViewController: UITableViewController {
     
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let realm = try? Realm()
             try! realm!.write {
-                realm!.delete(self.datasource[indexPath.row])
+                realm!.delete (self.datasourcei[indexPath.row])
             }
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }

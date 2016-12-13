@@ -8,27 +8,28 @@
 
 import UIKit
 import RealmSwift
-
 class ItemTableViewController: UITableViewController {
+    var selectedList = Lists()
 
     var datasource :Results<ListItems>!
-    
-    
+   // var datasourcei :Results<Lists>!
     @IBOutlet var listName: UINavigationItem!
+    
     var listname = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
+print(selectedList)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+      
+       // self.title = selectedList.name
         
-        listName.title = listname
+    
     }
-
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         datar()
         
     }
@@ -53,33 +54,35 @@ class ItemTableViewController: UITableViewController {
         return 0
     }*/
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return datasource.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ListItemTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListItemTableViewCell
         // Configure the cell...
+        
+        //var currentInfo = datasourcei[indexPath.row]
         let info = datasource[indexPath.row]
 cell.itemLabel.text = info.name
-        cell.desclabel.text = info.desc
+       
     
         return cell
     }
     
 
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let realm = try? Realm()
             try! realm!.write {
                 realm!.delete(self.datasource[indexPath.row])
             }
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }

@@ -16,18 +16,18 @@ class SignUpViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var messageLabel: UILabel!
     
-    var idefault = NSUserDefaults()
+    var idefault = UserDefaults()
     let userHasOnboardedKey = "user_has_onboarded"
     
 
     
-    @IBAction func loginVerifyButton(sender: AnyObject) {
+    @IBAction func loginVerifyButton(_ sender: AnyObject) {
         var usrEntered = usernameTextField.text
         var pwdEntered = passwordTextField.text
         var emlEntered = emailTextField.text
         
         let userHasOnboardedKey = "user_has_onboarded"
-        var iloggedin = NSUserDefaults.standardUserDefaults().boolForKey(userHasOnboardedKey)
+        var iloggedin = UserDefaults.standard.bool(forKey: userHasOnboardedKey)
        
         
         func userSignUp() {
@@ -37,21 +37,21 @@ class SignUpViewController: UIViewController {
             user.password = pwdEntered
             user.email = emlEntered
             
-            user.signUpInBackgroundWithBlock() {
+            user.signUpInBackground() {
                 (succeeded: Bool, error: NSError?) -> Void in
                 if error == nil {
                     // Hooray! Let them use the app now.
-                    self.messageLabel.textColor = UIColor.blueColor()
+                    self.messageLabel.textColor = UIColor.blue
                     self.messageLabel.text = "User Signed Up"
                     sleep(2)
-                    self.performSegueWithIdentifier("signUpSegue", sender: self)
-                    self.idefault.setBool(true, forKey: userHasOnboardedKey)
+                    self.performSegue(withIdentifier: "signUpSegue", sender: self)
+                    self.idefault.set(true, forKey: userHasOnboardedKey)
 
                     
                 } else {
                     // Show the errorString somewhere and let the user try again.
                     
-                    self.messageLabel.textColor = UIColor.redColor()
+                    self.messageLabel.textColor = UIColor.red
                     self.messageLabel.text = "An error has occured"
                     self.messageLabel2.text = "Please enter valid information"
 
@@ -86,7 +86,7 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
@@ -105,7 +105,7 @@ class SignUpViewController: UIViewController {
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
         

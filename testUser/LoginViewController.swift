@@ -15,14 +15,14 @@ class LoginViewController: UIViewController {
     @IBOutlet var loginInUserTextField: UITextField!
     var hi = "hi"
     var hi1 = "hi"
-    var idefault = NSUserDefaults()
+    var idefault = UserDefaults()
     let userHasOnboardedKey = "user_has_onboarded"
-    var ndefault = NSUserDefaults()
+    var ndefault = UserDefaults()
     
         override func viewDidLoad() {
         super.viewDidLoad()
             let userHasOnboardedKey = "user_has_onboarded"
-            var iloggedin = NSUserDefaults.standardUserDefaults().boolForKey(userHasOnboardedKey)
+            var iloggedin = UserDefaults.standard.bool(forKey: userHasOnboardedKey)
         
             
             
@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
@@ -48,27 +48,27 @@ class LoginViewController: UIViewController {
     }*/
 
     
-    @IBAction func loginButton(sender: AnyObject) {
+    @IBAction func loginButton(_ sender: AnyObject) {
         
         let userHasOnboardedKey = "user_has_onboarded"
-        var iloggedin = NSUserDefaults.standardUserDefaults().boolForKey(userHasOnboardedKey)
+        var iloggedin = UserDefaults.standard.bool(forKey: userHasOnboardedKey)
       
        
         
         if loginInUserTextField.text != "" && logInPassTextField.text != "" {
-            PFUser.logInWithUsernameInBackground(loginInUserTextField.text!, password: logInPassTextField.text!) {
+            PFUser.logInWithUsername(inBackground: loginInUserTextField.text!, password: logInPassTextField.text!) {
                 (user: PFUser?, error: NSError?) -> Void in
                 if error == nil {
                     
                     
-            self.messageLabel.textColor = UIColor.redColor()
+            self.messageLabel.textColor = UIColor.red
             self.messageLabel.text = "Logging In"
                     self.ndefault.setValue(self.loginInUserTextField.text, forKey: "username")
 
                     sleep(2)
-                self.performSegueWithIdentifier("logInSegue", sender: self)
+                self.performSegue(withIdentifier: "logInSegue", sender: self)
                     
-            self.idefault.setBool(true, forKey: userHasOnboardedKey)
+            self.idefault.set(true, forKey: userHasOnboardedKey)
 
                 
                 } else {
@@ -86,7 +86,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
             self.view.endEditing(true)
         

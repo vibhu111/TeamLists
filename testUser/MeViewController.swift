@@ -10,20 +10,20 @@ import UIKit
 
 class MeViewController: UIViewController, UIImagePickerControllerDelegate {
 
-    var idefault = NSUserDefaults()
-    var ndefault = NSUserDefaults()
+    var idefault = UserDefaults()
+    var ndefault = UserDefaults()
     let userHasOnboardedKey = "user_has_onboarded"
     @IBOutlet weak var imageView:UIImageView!
     
-    @IBAction func profilePicButton(sender: AnyObject) {
+    @IBAction func profilePicButton(_ sender: AnyObject) {
         
-        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.allowsEditing = false
-            imagePicker.sourceType = .PhotoLibrary
+            imagePicker.sourceType = .photoLibrary
         
             
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true, completion: nil)
             
         }
 
@@ -34,7 +34,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let name = ndefault.stringForKey("username")
+        let name = ndefault.string(forKey: "username")
         nameLabel.text = name
 
         
@@ -44,16 +44,16 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func logOutButton(sender: AnyObject) {
-         _ = NSUserDefaults.standardUserDefaults().boolForKey(userHasOnboardedKey)
+    @IBAction func logOutButton(_ sender: AnyObject) {
+         _ = UserDefaults.standard.bool(forKey: userHasOnboardedKey)
         PFUser.logOut()
-        var currentUlet = PFUser.currentUser()
+        let currentUlet = PFUser.current()
         if currentUlet == nil {
             sleep(1)
-        performSegueWithIdentifier("signOut", sender: self)
+        performSegue(withIdentifier: "signOut", sender: self)
             
             
-            self.idefault.setBool(false, forKey: userHasOnboardedKey)
+            self.idefault.set(false, forKey: userHasOnboardedKey)
         
         
         }
